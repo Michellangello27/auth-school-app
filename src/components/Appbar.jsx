@@ -1,6 +1,21 @@
 import React from 'react'
+import { logout } from '../axios/auth/login'
+import { useNavigate } from 'react-router'
 
 export default function Appbar() {
+    const navigate = useNavigate() //import from react router
+    async function handleLogout() {
+        try {
+            const status = await logout()
+            if (status === 200) {
+                navigate("/login")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -30,6 +45,9 @@ export default function Appbar() {
                         </li>
                         <li>
                             <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+                        </li>
+                        <li className=''>
+                            <button className='text-white cursor-pointer' onClick={handleLogout}>Logout</button>
                         </li>
                     </ul>
                 </div>
