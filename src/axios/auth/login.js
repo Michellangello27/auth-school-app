@@ -28,3 +28,12 @@ export async function logout() {
         throw error
     }
 }
+
+export async function changePassword(data) {
+    try {
+        const { status } = await instance.put('/auth/change-password', data)
+        return status
+    } catch (error) {
+        throw error
+    }
+}

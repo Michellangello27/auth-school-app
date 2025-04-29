@@ -1,5 +1,8 @@
+import { useForm } from "react-hook-form";
+import { profile } from "../axios/auth/login";
 
-export function ProfileForm() {
+export function ProfileForm() { 
+    const {register} = useForm({defaultValues: async ()=> await profile()}) 
     return (
       <form action="" role="profile" className="space-y-6">
         <fieldset className="border border-gray-300 p-5 rounded-lg">
@@ -9,8 +12,7 @@ export function ProfileForm() {
             <span className="text-gray-600">Primer Nombre</span>
             <input
               type="text"
-              name="firstname"
-              defaultValue="Ana"
+              {...register("firstname")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -18,9 +20,8 @@ export function ProfileForm() {
           <label className="block mt-4">
             <span className="text-gray-600">Segundo Nombre</span>
             <input
-              type="text"
-              name="middlename"
-              defaultValue="María"
+              type="text" 
+              {...register("middlename")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -28,9 +29,8 @@ export function ProfileForm() {
           <label className="block mt-4">
             <span className="text-gray-600">Primer Apellido</span>
             <input
-              type="text"
-              name="lastname"
-              defaultValue="González"
+              type="text" 
+              {...register("lastname")} 
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -38,9 +38,8 @@ export function ProfileForm() {
           <label className="block mt-4">
             <span className="text-gray-600">Segundo Apellido</span>
             <input
-              type="text"
-              name="secondlastname"
-              defaultValue="Pérez"
+              type="text" 
+              {...register("secondlastname")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -53,8 +52,7 @@ export function ProfileForm() {
             <span className="text-gray-600">Correo Electrónico</span>
             <input
               type="email"
-              name="email"
-              defaultValue="ana.gonzalez@email.com"
+              {...register("email")}
               readOnly
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 bg-gray-100 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
@@ -64,8 +62,7 @@ export function ProfileForm() {
             <span className="text-gray-600">Teléfono</span>
             <input
               type="tel"
-              name="phone"
-              defaultValue="78901234"
+              {...register("phone")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -73,9 +70,8 @@ export function ProfileForm() {
           <label className="block mt-4">
             <span className="text-gray-600">Teléfono de Emergencia</span>
             <input
-              type="tel"
-              name="emergency_phone"
-              defaultValue="77778888"
+              type="tel" 
+              {...register("emergency_phone")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -83,9 +79,8 @@ export function ProfileForm() {
           <label className="block mt-4">
             <span className="text-gray-600">Dirección</span>
             <input
-              type="text"
-              name="address"
-              defaultValue="Calle Falsa 123"
+              type="text" 
+              {...register("address")}
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
           </label>
@@ -98,8 +93,8 @@ export function ProfileForm() {
             <span className="text-gray-600">Rol</span>
             <input
               type="text"
+              {...register("role.name")}
               name="role"
-              defaultValue="Administrador"
               readOnly
               className="mt-2 block w-full h-10 px-3 rounded-lg border-gray-300 bg-gray-100 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
             />
